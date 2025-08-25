@@ -312,12 +312,22 @@ const Index = () => {
           <p className="text-xl text-muted-foreground mb-8">
             Seulement 25 places disponibles pour cette session exclusive
           </p>
-          <Button 
-            size="lg"
-            className="text-2xl py-8 px-12 bg-primary hover:bg-primary/90 animate-pulse-green font-bold"
-          >
-            🔘 JE RÉSERVE MA PLACE MAINTENANT
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              size="lg"
+              className="text-2xl py-8 px-12 bg-primary hover:bg-primary/90 animate-pulse-green font-bold"
+            >
+              🔘 JE RÉSERVE MA PLACE MAINTENANT
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-primary text-primary hover:bg-primary/10 font-bold text-xl px-8 py-8"
+              onClick={() => window.location.href = '/auth'}
+            >
+              🔐 Se connecter
+            </Button>
+          </div>
         </div>
       </section>
     </div>
