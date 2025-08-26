@@ -315,7 +315,7 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg"
-              className="text-2xl py-8 px-12 bg-primary hover:bg-primary/90 animate-pulse-green font-bold"
+              className="text-lg py-8 px-12 bg-primary hover:bg-primary/90 animate-pulse-green font-bold"
               onClick={() => window.location.href = '/auth'}
             >
               🔘 JE RÉSERVE MA PLACE MAINTENANT
