@@ -7,6 +7,7 @@ import { Countdown } from '@/components/ui/countdown';
 import { useForm } from 'react-hook-form';
 import { Shield, Code, Zap, Users, Award, Lock, ChevronDown, ChevronUp, Star, CheckCircle, Target, TrendingUp, Globe } from 'lucide-react';
 import cyberHero from '@/assets/cyber-hero.jpg';
+import ChatBot from '@/components/ChatBot';
 
 interface FormData {
   nom: string;
@@ -331,6 +332,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+      
+      {/* ChatBot Component */}
+      <ChatBot />
     </div>
   );
 };
