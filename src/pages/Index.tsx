@@ -316,16 +316,17 @@ const Index = () => {
             <Button 
               size="lg"
               className="text-2xl py-8 px-12 bg-primary hover:bg-primary/90 animate-pulse-green font-bold"
+              onClick={() => window.location.href = '/auth'}
             >
               🔘 JE RÉSERVE MA PLACE MAINTENANT
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-primary text-primary hover:bg-primary/10 font-bold text-xl px-8 py-8"
-              onClick={() => window.location.href = '/auth'}
+              className="border-secondary text-secondary hover:bg-secondary/10 font-bold text-xl px-8 py-8"
+              onClick={() => window.open('https://wa.me/33767156496', '_blank')}
             >
-              🔐 Se connecter
+              📱 Contactez-nous sur WhatsApp
             </Button>
           </div>
         </div>
