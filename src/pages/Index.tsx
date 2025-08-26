@@ -114,7 +114,7 @@ const Index = () => {
             Formation Intensive - Places Limitées
           </Badge>
           
-          <h1 className="text-4xl md:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-3xl md:text-6xl font-bold mb-6 leading-tight">
             Devenez Expert en{' '}
             <span className="text-primary cyber-text-glow">Développement Web</span>
             {' '}& <span className="text-secondary cyber-text-glow">Hacking Éthique</span>
