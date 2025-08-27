@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import { Shield, Code, Zap, Users, Award, Lock, ChevronDown, ChevronUp, Star, CheckCircle, Target, TrendingUp, Globe } from 'lucide-react';
 import cyberHero from '@/assets/cyber-hero.jpg';
 import ChatBot from '@/components/ChatBot';
+import EventbriteTickets from '@/components/EventbriteTickets';
 
 interface FormData {
   nom: string;
@@ -17,6 +18,7 @@ interface FormData {
 
 const Index = () => {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const [showTicketCreation, setShowTicketCreation] = useState(false);
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
   
   const targetDate = new Date('2025-09-06T08:00:00');
@@ -329,9 +331,24 @@ const Index = () => {
             >
               📱 Contactez-nous sur WhatsApp
             </Button>
+            <Button 
+              size="lg" 
+              variant="secondary" 
+              className="bg-secondary hover:bg-secondary/90 text-white font-bold text-xl px-8 py-8"
+              onClick={() => setShowTicketCreation(!showTicketCreation)}
+            >
+              🎫 Créer Tickets Gratuits
+            </Button>
           </div>
         </div>
       </section>
+      
+      {/* Eventbrite Tickets Section */}
+      {showTicketCreation && (
+        <section className="py-20 px-4 bg-cyber-gray/20">
+          <EventbriteTickets />
+        </section>
+      )}
       
       {/* ChatBot Component */}
       <ChatBot />
