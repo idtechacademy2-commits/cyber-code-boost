@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import { Shield, Code, Zap, Users, Award, Lock, ChevronDown, ChevronUp, Star, CheckCircle, Target, TrendingUp, Globe } from 'lucide-react';
 import cyberHero from '@/assets/cyber-hero.jpg';
 import ChatBot from '@/components/ChatBot';
-import EventbriteTickets from '@/components/EventbriteTickets';
+import FreeTicketReservation from '@/components/FreeTicketReservation';
 
 interface FormData {
   nom: string;
@@ -18,7 +18,7 @@ interface FormData {
 
 const Index = () => {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
-  const [showTicketCreation, setShowTicketCreation] = useState(false);
+  const [showReservation, setShowReservation] = useState(false);
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
   
   const targetDate = new Date('2025-09-06T08:00:00');
@@ -317,36 +317,28 @@ const Index = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
-              size="lg"
-              className="text-lg py-8 px-12 bg-primary hover:bg-primary/90 animate-pulse-green font-bold"
-              onClick={() => window.location.href = '/auth'}
+              size="sm"
+              className="text-base py-4 px-8 bg-primary hover:bg-primary/90 animate-pulse-green font-bold"
+              onClick={() => setShowReservation(!showReservation)}
             >
               🔘 JE RÉSERVE MA PLACE MAINTENANT
             </Button>
             <Button 
-              size="lg" 
+              size="sm" 
               variant="outline" 
-              className="border-secondary text-secondary hover:bg-secondary/10 font-bold text-xl px-8 py-8"
+              className="border-secondary text-secondary hover:bg-secondary/10 font-bold text-base px-6 py-4"
               onClick={() => window.open('https://wa.me/33767156496', '_blank')}
             >
-              📱 Contactez-nous sur WhatsApp
-            </Button>
-            <Button 
-              size="lg" 
-              variant="secondary" 
-              className="bg-secondary hover:bg-secondary/90 text-white font-bold text-xl px-8 py-8"
-              onClick={() => setShowTicketCreation(!showTicketCreation)}
-            >
-              🎫 Créer Tickets Gratuits
+              📱 CONTACTEZ NOUS SUR WHATSAPP
             </Button>
           </div>
         </div>
       </section>
       
-      {/* Eventbrite Tickets Section */}
-      {showTicketCreation && (
+      {/* Free Ticket Reservation Section */}
+      {showReservation && (
         <section className="py-20 px-4 bg-cyber-gray/20">
-          <EventbriteTickets />
+          <FreeTicketReservation />
         </section>
       )}
       
