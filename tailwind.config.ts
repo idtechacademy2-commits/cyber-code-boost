@@ -61,7 +61,13 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Couleurs cyber personnalisées
+				'cyber-green': 'hsl(var(--cyber-green))',
+				'cyber-blue': 'hsl(var(--cyber-blue))',
+				'cyber-dark': 'hsl(var(--cyber-dark))',
+				'cyber-gray': 'hsl(var(--cyber-gray))',
+				'neon-glow': 'hsl(var(--neon-glow))'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
