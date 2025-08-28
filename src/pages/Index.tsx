@@ -9,6 +9,8 @@ import { Shield, Code, Zap, Users, Award, Lock, ChevronDown, ChevronUp, Star, Ch
 import cyberHero from '@/assets/cyber-hero.jpg';
 import ChatBot from '@/components/ChatBot';
 import FreeTicketReservation from '@/components/FreeTicketReservation';
+import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/hooks/use-toast';
 
 interface FormData {
   nom: string;
@@ -19,13 +21,41 @@ interface FormData {
 const Index = () => {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [showReservation, setShowReservation] = useState(false);
-  const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>();
+  const { toast } = useToast();
   
   const targetDate = new Date('2025-09-06T08:00:00');
 
-  const onSubmit = (data: FormData) => {
-    console.log('Inscription:', data);
-    // Ici vous pouvez traiter l'inscription
+  const onSubmit = async (data: FormData) => {
+    setIsSubmitting(true);
+    try {
+      const { error } = await supabase
+        .from('inscriptions')
+        .insert([data]);
+
+      if (error) {
+        toast({
+          title: "Erreur",
+          description: "Une erreur s'est produite lors de l'inscription. Veuillez réessayer.",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Inscription confirmée !",
+          description: "Votre inscription a été enregistrée avec succès. Nous vous contacterons bientôt.",
+        });
+        reset(); // Réinitialiser le formulaire
+      }
+    } catch (error) {
+      toast({
+        title: "Erreur",
+        description: "Une erreur s'est produite lors de l'inscription. Veuillez réessayer.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const toggleFaq = (index: number) => {
@@ -188,8 +218,9 @@ const Index = () => {
                 type="submit" 
                 size="lg" 
                 className="w-full text-xl py-6 bg-primary hover:bg-primary/90 animate-pulse-green font-bold"
+                disabled={isSubmitting}
               >
-                🔘 JE M'INSCRIS MAINTENANT
+                {isSubmitting ? "⏳ INSCRIPTION EN COURS..." : "🔘 JE M'INSCRIS MAINTENANT"}
               </Button>
               <p className="text-sm text-muted-foreground text-center">
                 <Lock className="w-4 h-4 inline mr-1" />
